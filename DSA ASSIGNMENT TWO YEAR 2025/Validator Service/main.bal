@@ -11,7 +11,6 @@ service /validate on new http:Listener(8080) {
         json payload = check req.getJsonPayload();
         io:println("✅ Ticket validated: ", payload.toJsonString());
 
-        // Publish event for notification
         check producer->send({
             topic: "ticket.validated",
             value: payload.toJsonString()
@@ -20,3 +19,4 @@ service /validate on new http:Listener(8080) {
         check caller->respond({ status: "validated" });
     }
 }
+
