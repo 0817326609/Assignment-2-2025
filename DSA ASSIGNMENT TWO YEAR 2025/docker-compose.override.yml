@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  passenger-service:
+    volumes:
+      - ./passenger-service:/app
+    environment:
+      - ENV=dev
+      - MONGO_URL=mongodb://mongo:27017/ticketing
+      - KAFKA_BROKER=kafka:9092
+
+  ticketing-service:
+    volumes:
+      - ./ticketing-service:/app
+    environment:
+      - ENV=dev
+      - MONGO_URL=mongodb://mongo:27017/ticketing
+      - KAFKA_BROKER=kafka:9092
+
+  payment-service:
+    volumes:
+      - ./payment-service:/app
+    environment:
+      - ENV=dev
+      - MONGO_URL=mongodb://mongo:27017/ticketing
+      - KAFKA_BROKER=kafka:9092
+
+  validator-service:
+    volumes:
+      - ./validator-service:/app
+    environment:
+      - ENV=dev
+      - MONGO_URL=mongodb://mongo:27017/ticketing
+      - KAFKA_BROKER=kafka:9092
+
+  notification-service:
+    volumes:
+      - ./notification-service:/app
+    environment:
+      - ENV=dev
+      - MONGO_URL=mongodb://mongo:27017/ticketing
+      - KAFKA_BROKER=kafka:9092
+
+  admin-service:
+    volumes:
+      - ./admin-service:/app
+    environment:
+      - ENV=dev
+      - MONGO_URL=mongodb://mongo:27017/ticketing
+      - KAFKA_BROKER=kafka:9092

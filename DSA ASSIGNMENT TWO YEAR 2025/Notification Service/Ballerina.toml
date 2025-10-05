@@ -1,0 +1,4 @@
+[package]
+org = "smart"
+name = "notification_service"
+version = "1.0.0"
