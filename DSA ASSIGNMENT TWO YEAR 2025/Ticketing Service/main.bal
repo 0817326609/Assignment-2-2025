@@ -14,7 +14,7 @@ service /tickets on new http:Listener(8080) {
         check ticketDb->insert("tickets", data);
         io:println("🎫 Ticket created: ", data.toJsonString());
 
-        // Publish Kafka event
+    
         check producer->send({
             topic: "ticket.requests",
             value: data.toJsonString()
@@ -23,3 +23,4 @@ service /tickets on new http:Listener(8080) {
         check caller->respond({ message: "Ticket created", data: data });
     }
 }
+
